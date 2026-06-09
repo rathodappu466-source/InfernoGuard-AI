@@ -2,11 +2,11 @@
 
 **Enterprise Fire & Smoke Detection System**  
 Real-time AI-powered surveillance for industrial safety
+Built by Appu Rathod using YOLOv8, OpenCV, Streamlit, SQLite, and Plotly Analytics.
 
 [![Python](https://img.shields.io/badge/Python-3.14+-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.57.0-red.svg)](https://streamlit.io/)
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-yellow.svg)](https://github.com/ultralytics/ultralytics)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
@@ -27,18 +27,36 @@ InfernoGuard AI is an enterprise-grade fire and smoke detection system that leve
 
 ---
 
-## 📸 Screenshots
+## 🌐 Live Demo
 
-### Dashboard
-![Dashboard](https://via.placeholder.com/800x400/1a1a2e/00d4ff?text=Dashboard+Preview)
+Coming Soon
 
-### Live Detection
-![Live Detection](https://via.placeholder.com/800x400/1a1a2e/ff6a00?text=Live+Detection+Preview)
+Streamlit Cloud Deployment
 
-### Analytics
-![Analytics](https://via.placeholder.com/800x400/1a1a2e/00ffcc?text=Analytics+Preview)
+## 🛠️ Tech Stack
 
----
+Frontend:
+- Streamlit
+- HTML/CSS
+- Plotly
+
+Backend:
+- Python
+- SQLite
+
+AI & Computer Vision:
+- YOLOv8
+- OpenCV
+- NumPy
+- Ultralytics
+
+Security:
+- bcrypt Authentication
+- Session Management
+
+Testing:
+- Pytest
+- Hypothesis
 
 ## 🚀 Quick Start
 
@@ -310,12 +328,6 @@ PermissionError: infernoguard.log
 
 ---
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 🌟 Acknowledgments
 
 - **YOLOv8** by [Ultralytics](https://github.com/ultralytics/ultralytics) — Object detection model
@@ -329,11 +341,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For questions, issues, or feature requests:
 
-- 📧 Email: support@infernoguard.ai *(example)*
-- 🐛 Issues: [GitHub Issues](https://github.com/your-repo/issues) *(example)*
-- 📖 Documentation: See [docs](docs/) folder
+Developer: Appu Rathod
 
----
+📧 Email: YOUR_EMAIL@gmail.com
+
+💼 LinkedIn: https://linkedin.com/in/www.linkedin.com/in/appu-rathod-08172a397
+
+🐙 GitHub: https://github.com/rathodappu466-source
+
+📌 Repository:
+https://github.com/rathodappu466-source/InfernoGuard-AI
 
 ## 🎯 Roadmap
 
@@ -368,7 +385,11 @@ If you find this project useful, please consider giving it a ⭐!
 
 <div align="center">
 
-**Built with ❤️ and 🔥 by the InfernoGuard Team**
+**Built with ❤️ by Appu Rathod
+
+AI-Powered Fire & Smoke Detection System
+
+Portfolio Project | Computer Vision | YOLOv8 | Streamlit**
 
 [![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)](https://streamlit.io/)

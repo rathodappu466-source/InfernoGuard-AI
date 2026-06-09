@@ -1,0 +1,75 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# InfernoGuard AI — Git Ignore Configuration
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# ── Virtual Environments ──────────────────────────────────────────────────────
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+infernoguard_ai/
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+*.err.log
+*.out.log
+infernoguard.log
+
+# ── Database ──────────────────────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+database/infernoguard.db
+
+# ── Screenshots (Optional - comment out if you want to track these) ───────────
+screenshots/
+*.jpg
+*.jpeg
+*.png
+!assets/*.png
+!assets/*.jpg
+
+# ── IDE & Editors ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+.DS_Store
+
+# ── Streamlit ─────────────────────────────────────────────────────────────────
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# ── Environment Variables ─────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+.hypothesis/
+
+# ── Distribution / Packaging ──────────────────────────────────────────────────
+dist/
+build/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ── Temporary Files ───────────────────────────────────────────────────────────
+*.tmp
+*.bak
+*.cache

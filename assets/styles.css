@@ -1,0 +1,2881 @@
+﻿/* ============================================================
+   InfernoGuard AI — Enterprise Design System v3.0
+   Professional SaaS Platform Design
+   ============================================================ */
+
+/* ── Google Fonts Import ───────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ===== STREAMLIT DARK FIX ===== */
+
+section.main > div {
+    background: transparent !important;
+}
+
+div[data-testid="stVerticalBlock"] > div:has(.element-container) {
+    background: transparent !important;
+}
+
+div[data-testid="stExpander"] {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+div[data-testid="stForm"] {
+    background: transparent !important;
+    border: none !important;
+}
+
+div[data-testid="stHorizontalBlock"] {
+    gap: 1rem !important;
+}
+/* ══════════════════════════════════════════════════════════════
+   1. CSS VARIABLES — ENTERPRISE COLOR SYSTEM
+   ══════════════════════════════════════════════════════════════ */
+:root {
+  /* ── Background Colors ─────────────────────────────────────── */
+  --bg-primary:        #050816;
+  --bg-secondary:      #0b1220;
+  --bg-card:           #0f1729;
+  --bg-card-hover:     #141d30;
+  --bg-overlay:        rgba(5, 8, 22, 0.95);
+  
+  /* ── Fire & Alert Colors ───────────────────────────────────── */
+  --fire-red:          #ff5e00;
+  --fire-orange:       #ff7a00;
+  --fire-yellow:       #ffb84d;
+  
+  /* ── Tech & Primary Colors ─────────────────────────────────── */
+  --primary-cyan:      #00d4ff;
+  --primary-blue:      #0066ff;
+  --primary-teal:      #00ffcc;
+  
+  /* ── Status Colors ─────────────────────────────────────────── */
+  --status-success:    #00ffcc;
+  --status-warning:    #ffb84d;
+  --status-danger:     #ff5e00;
+  --status-info:       #00d4ff;
+  
+  /* ── Text Colors ───────────────────────────────────────────── */
+  --text-primary:      #ffffff;
+  --text-secondary:    #9ca3af;
+  --text-muted:        #6b7280;
+  
+  /* ── Border Colors ─────────────────────────────────────────── */
+  --border-subtle:     rgba(0, 212, 255, 0.15);
+  --border-medium:     rgba(0, 212, 255, 0.25);
+  --border-strong:     rgba(0, 212, 255, 0.40);
+  
+  /* ── Typography ────────────────────────────────────────────── */
+  --font-primary:      'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono:         'JetBrains Mono', 'Consolas', monospace;
+  
+  /* ── Font Sizes (Standardized) ─────────────────────────────── */
+  --font-h1:           36px;
+  --font-h2:           28px;
+  --font-h3:           22px;
+  --font-body:         15px;
+  --font-label:        13px;
+  --font-small:        12px;
+  
+  /* ── Spacing ───────────────────────────────────────────────── */
+  --space-xs:          0.25rem;
+  --space-sm:          0.5rem;
+  --space-md:          1rem;
+  --space-lg:          1.5rem;
+  --space-xl:          2rem;
+  --space-2xl:         3rem;
+  
+  /* ── Border Radius ─────────────────────────────────────────── */
+  --radius-sm:         6px;
+  --radius-md:         10px;
+  --radius-lg:         14px;
+  --radius-xl:         18px;
+  
+  /* ── Shadows ───────────────────────────────────────────────── */
+  --shadow-sm:         0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md:         0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-lg:         0 8px 32px rgba(0, 0, 0, 0.35);
+  
+  /* ── Transitions ───────────────────────────────────────────── */
+  --transition-fast:   0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-med:    0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2. GLOBAL RESET & BASE STYLES
+   ══════════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, [data-testid="stAppViewContainer"] {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-testid="stApp"] {
+  background: 
+    radial-gradient(ellipse at 20% 10%, rgba(0, 102, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(255, 94, 0, 0.05) 0%, transparent 50%),
+    var(--bg-primary);
+}
+
+/* ── Main Container ────────────────────────────────────────── */
+[data-testid="stMainBlockContainer"] {
+  padding-top: 1.5rem !important;
+  padding-bottom: 2rem !important;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3. TYPOGRAPHY SYSTEM
+   ══════════════════════════════════════════════════════════════ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary) !important;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+h1 { font-size: var(--font-h1); }
+h2 { font-size: var(--font-h2); }
+h3 { font-size: var(--font-h3); }
+
+p {
+  font-size: var(--font-body);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4. SIDEBAR STYLING
+   ══════════════════════════════════════════════════════════════ */
+[data-testid="stSidebar"] {
+  background: var(--bg-secondary) !important;
+  border-right: 1px solid var(--border-subtle) !important;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3) !important;
+  width: 280px !important;
+}
+
+[data-testid="stSidebar"] > div:first-child {
+  padding: 0 !important;
+}
+
+/* ── Sidebar Navigation Links ──────────────────────────────── */
+[data-testid="stSidebar"] .stPageLink a,
+[data-testid="stSidebar"] a[data-testid="stPageLink"] {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0.75rem 1rem !important;
+  margin: 0.25rem 0.75rem !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-secondary) !important;
+  font-size: var(--font-label) !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all var(--transition-fast) !important;
+  border: 1px solid transparent !important;
+}
+
+[data-testid="stSidebar"] .stPageLink a:hover,
+[data-testid="stSidebar"] a[data-testid="stPageLink"]:hover {
+  background: rgba(0, 212, 255, 0.08) !important;
+  color: var(--primary-cyan) !important;
+  border-color: var(--border-subtle) !important;
+  transform: translateX(2px) !important;
+}
+
+[data-testid="stSidebar"] .stPageLink a[aria-current="page"],
+[data-testid="stSidebar"] a[data-testid="stPageLink"][aria-current="page"] {
+  background: rgba(0, 212, 255, 0.12) !important;
+  color: var(--primary-cyan) !important;
+  border-color: var(--border-medium) !important;
+  font-weight: 600 !important;
+}
+
+/* ── Sidebar Logo Section ──────────────────────────────────── */
+.ig-sidebar-logo {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.ig-sidebar-logo-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 12px rgba(255, 94, 0, 0.5));
+}
+
+.ig-sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.01em;
+}
+
+.ig-sidebar-subtitle {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.25rem;
+}
+
+/* ── Sidebar User Profile ──────────────────────────────────── */
+.ig-sidebar-user {
+  margin: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ig-sidebar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.ig-sidebar-username {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.ig-sidebar-role {
+  font-size: 0.7rem;
+  color: var(--primary-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── AI Status Widget ──────────────────────────────────────── */
+.ig-ai-status {
+  margin: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 255, 204, 0.05);
+  border: 1px solid rgba(0, 255, 204, 0.15);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ig-ai-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--status-success);
+  box-shadow: 0 0 8px var(--status-success);
+  animation: pulse-active 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.ig-ai-status-text {
+  font-size: 0.75rem;
+  color: var(--status-success);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5. CARD SYSTEM
+   ══════════════════════════════════════════════════════════════ */
+.ig-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-med);
+}
+
+.ig-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.ig-card-sm {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6. METRIC CARDS
+   ══════════════════════════════════════════════════════════════ */
+.ig-metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-med);
+  position: relative;
+  overflow: hidden;
+}
+
+.ig-metric-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-blue), var(--primary-cyan));
+  opacity: 0.4;
+  transition: opacity var(--transition-med);
+}
+
+.ig-metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-medium);
+}
+
+.ig-metric-card:hover::after {
+  opacity: 1;
+}
+
+.ig-metric-card.fire::after {
+  background: linear-gradient(90deg, var(--fire-red), var(--fire-orange));
+}
+
+.ig-metric-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.ig-metric-card.fire .ig-metric-value {
+  background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ig-metric-label {
+  font-size: var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. HERO SECTIONS
+   ══════════════════════════════════════════════════════════════ */
+.ig-hero {
+  background: linear-gradient(135deg,
+    rgba(0, 102, 255, 0.08) 0%,
+    rgba(0, 212, 255, 0.05) 50%,
+    rgba(255, 94, 0, 0.05) 100%);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 2rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.ig-hero-title {
+  font-size: var(--font-h1);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.ig-hero-subtitle {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   8. SECTION TITLES
+   ══════════════════════════════════════════════════════════════ */
+.ig-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-md);
+}
+
+.ig-title {
+  font-size: var(--font-h2);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.ig-title-fire {
+  background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   9. BUTTONS
+   ══════════════════════════════════════════════════════════════ */
+.stButton > button {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan)) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 600 !important;
+  font-family: var(--font-primary) !important;
+  letter-spacing: 0.02em !important;
+  padding: 0.65rem 1.5rem !important;
+  font-size: var(--font-label) !important;
+  transition: all var(--transition-fast) !important;
+  cursor: pointer !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.stButton > button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-md) !important;
+  filter: brightness(1.1) !important;
+}
+
+.stButton > button:active {
+  transform: translateY(0) !important;
+}
+
+/* Fire/Danger Button */
+.ig-btn-fire .stButton > button,
+.stButton.ig-btn-fire > button {
+  background: linear-gradient(135deg, var(--fire-red), var(--fire-orange)) !important;
+}
+
+/* Ghost Button */
+.ig-btn-ghost .stButton > button {
+  background: transparent !important;
+  border: 1px solid var(--border-medium) !important;
+  color: var(--primary-cyan) !important;
+  box-shadow: none !important;
+}
+
+.ig-btn-ghost .stButton > button:hover {
+  background: rgba(0, 212, 255, 0.08) !important;
+  border-color: var(--border-strong) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   10. FORM INPUTS
+   ══════════════════════════════════════════════════════════════ */
+.stTextInput > div > div > input,
+.stTextArea > div > div > textarea,
+div[data-baseweb="select"] > div ,
+.stNumberInput > div > div > input,
+.stMultiSelect > div > div > div {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-body) !important;
+  padding: 0.65rem 1rem !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.stTextInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus,
+.stNumberInput > div > div > input:focus {
+  border-color: var(--primary-cyan) !important;
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1) !important;
+  outline: none !important;
+}
+
+/* Input Labels */
+.stTextInput label, .stTextArea label, .stSelectbox label,
+.stNumberInput label, .stSlider label, .stToggle label,
+.stMultiSelect label {
+  color: var(--text-secondary) !important;
+  font-size: var(--font-label) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   11. TOGGLES & SLIDERS
+   ══════════════════════════════════════════════════════════════ */
+.stToggle > label > div {
+  background: var(--text-muted) !important;
+  transition: background var(--transition-fast) !important;
+}
+
+.stToggle > label > div[data-checked="true"],
+.stToggle input:checked + div {
+  background: var(--primary-cyan) !important;
+}
+
+.stSlider > div > div > div > div {
+  background: linear-gradient(90deg, var(--primary-blue), var(--primary-cyan)) !important;
+}
+
+.stSlider > div > div > div > div > div {
+  background: var(--primary-cyan) !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   12. TABS
+   ══════════════════════════════════════════════════════════════ */
+.stTabs [data-baseweb="tab-list"] {
+  background: transparent !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  gap: 0.25rem;
+}
+
+.stTabs [data-baseweb="tab"] {
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  border-radius: var(--radius-md) var(--radius-md) 0 0 !important;
+  padding: 0.65rem 1.25rem !important;
+  font-size: var(--font-label) !important;
+  font-weight: 500 !important;
+  transition: all var(--transition-fast) !important;
+  border: 1px solid transparent !important;
+  border-bottom: none !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+  color: var(--primary-cyan) !important;
+  background: rgba(0, 212, 255, 0.05) !important;
+}
+
+.stTabs [aria-selected="true"] {
+  background: rgba(0, 212, 255, 0.1) !important;
+  color: var(--primary-cyan) !important;
+  border-color: var(--border-subtle) !important;
+  border-bottom: 2px solid var(--primary-cyan) !important;
+  font-weight: 700 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   13. BADGES & STATUS INDICATORS
+   ══════════════════════════════════════════════════════════════ */
+.ig-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: var(--font-small);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.ig-badge.fire {
+  background: rgba(255, 94, 0, 0.15);
+  color: var(--fire-orange);
+  border: 1px solid rgba(255, 94, 0, 0.3);
+}
+
+.ig-badge.smoke {
+  background: rgba(0, 212, 255, 0.12);
+  color: var(--primary-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.ig-badge.online {
+  background: rgba(0, 255, 204, 0.12);
+  color: var(--status-success);
+  border: 1px solid rgba(0, 255, 204, 0.3);
+}
+
+.ig-badge.warning {
+  background: rgba(255, 184, 77, 0.12);
+  color: var(--status-warning);
+  border: 1px solid rgba(255, 184, 77, 0.3);
+}
+
+/* Status Dots */
+.ig-status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.ig-status-dot.active {
+  background: var(--status-success);
+  box-shadow: 0 0 8px var(--status-success);
+  animation: pulse-active 2s ease-in-out infinite;
+}
+
+.ig-status-dot.warning {
+  background: var(--status-warning);
+  box-shadow: 0 0 8px var(--status-warning);
+}
+
+.ig-status-dot.danger {
+  background: var(--status-danger);
+  box-shadow: 0 0 8px var(--status-danger);
+  animation: pulse-active 1.5s ease-in-out infinite;
+}
+
+.ig-status-dot.inactive {
+  background: var(--text-muted);
+  box-shadow: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   14. DIVIDERS
+   ══════════════════════════════════════════════════════════════ */
+.ig-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
+  border: none;
+  margin: 1.5rem 0;
+  opacity: 0.3;
+}
+
+.ig-divider-subtle {
+  height: 1px;
+  background: var(--border-subtle);
+  border: none;
+  margin: 1rem 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   15. UTILITY CLASSES
+   ══════════════════════════════════════════════════════════════ */
+.ig-mono {
+  font-family: var(--font-mono) !important;
+  font-size: 0.85rem;
+  color: var(--primary-cyan);
+  letter-spacing: 0.02em;
+}
+
+.ig-label {
+  font-size: var(--font-small);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.ig-caption {
+  font-size: var(--font-label);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.ig-highlight {
+  color: var(--primary-cyan);
+  font-weight: 600;
+}
+
+.ig-highlight-fire {
+  color: var(--fire-orange);
+  font-weight: 600;
+}
+
+/* Severity Classes */
+.ig-severity-high {
+  color: var(--fire-red);
+  font-weight: 700;
+}
+
+.ig-severity-medium {
+  color: var(--status-warning);
+  font-weight: 600;
+}
+
+.ig-severity-low {
+  color: var(--primary-cyan);
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   16. STREAMLIT NATIVE OVERRIDES
+   ══════════════════════════════════════════════════════════════ */
+[data-testid="stMetric"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 1.25rem 1.5rem !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: all var(--transition-med) !important;
+}
+
+[data-testid="stMetric"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-color: var(--border-medium) !important;
+}
+
+[data-testid="stMetricValue"] {
+  color: var(--primary-cyan) !important;
+  font-weight: 800 !important;
+  font-size: 2rem !important;
+}
+
+[data-testid="stMetricLabel"] {
+  color: var(--text-secondary) !important;
+  font-size: var(--font-label) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  font-weight: 600 !important;
+}
+
+/* Expanders */
+.streamlit-expanderHeader {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  font-size: var(--font-body) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.streamlit-expanderHeader:hover {
+  background: var(--bg-card-hover) !important;
+  border-color: var(--border-medium) !important;
+}
+
+.streamlit-expanderContent {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-top: none !important;
+  border-radius: 0 0 var(--radius-md) var(--radius-md) !important;
+}
+
+/* Progress Bar */
+.stProgress > div > div > div {
+  background: linear-gradient(90deg, var(--primary-blue), var(--primary-cyan)) !important;
+  border-radius: 999px !important;
+}
+
+.stProgress > div > div {
+  background: var(--bg-card) !important;
+  border-radius: 999px !important;
+}
+
+/* Dataframes */
+.stDataFrame, [data-testid="stTable"] {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden;
+}
+
+.stDataFrame thead th {
+  background: rgba(0, 102, 255, 0.12) !important;
+  color: var(--primary-cyan) !important;
+  font-size: var(--font-label) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  border-bottom: 1px solid var(--border-medium) !important;
+  font-weight: 700 !important;
+}
+
+.stDataFrame tbody tr:hover {
+  background: rgba(0, 212, 255, 0.05) !important;
+}
+
+.stDataFrame tbody td {
+  color: var(--text-primary) !important;
+  font-size: var(--font-body) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   17. LOGIN PAGE STYLES
+   ══════════════════════════════════════════════════════════════ */
+.ig-auth-portal {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+
+.ig-auth-brand {
+  background: linear-gradient(135deg,
+    rgba(0, 102, 255, 0.08) 0%,
+    rgba(0, 212, 255, 0.05) 50%,
+    rgba(255, 94, 0, 0.05) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ig-brand-logo-icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 16px rgba(255, 94, 0, 0.6));
+  margin-bottom: 1rem;
+}
+
+.ig-brand-logo-name {
+  font-size: 1.8rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.ig-brand-logo-tagline {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ig-brand-headline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 1.5rem 0 1rem;
+  line-height: 1.3;
+}
+
+.ig-brand-tagline {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.ig-brand-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ig-brand-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.ig-brand-feature-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.ig-brand-feature-text strong {
+  display: block;
+  font-size: var(--font-body);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.ig-brand-feature-text span {
+  font-size: var(--font-label);
+  color: var(--text-secondary);
+}
+
+.ig-brand-stats {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.ig-brand-stat {
+  text-align: center;
+}
+
+.ig-brand-stat-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.ig-brand-stat-label {
+  font-size: var(--font-small);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ig-brand-trust {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ig-trust-badge {
+  font-size: var(--font-small);
+  padding: 0.4rem 0.75rem;
+  background: rgba(0, 255, 204, 0.08);
+  border: 1px solid rgba(0, 255, 204, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--status-success);
+  font-weight: 600;
+}
+
+/* Auth Panel (Right Side) */
+.ig-auth-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-lg);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ig-auth-header {
+  margin-bottom: 2rem;
+}
+
+.ig-auth-eyebrow {
+  font-size: var(--font-small);
+  color: var(--primary-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.ig-auth-title {
+  font-size: var(--font-h2);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.ig-auth-subtitle {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.ig-auth-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: var(--font-small);
+  color: var(--text-muted);
+}
+
+.ig-auth-footer-dot {
+  color: var(--text-muted);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   18. ANALYTICS PAGE STYLES
+   ══════════════════════════════════════════════════════════════ */
+.ig-analytics-header {
+  background: linear-gradient(135deg,
+    rgba(0, 102, 255, 0.08) 0%,
+    rgba(0, 212, 255, 0.05) 100%);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.ig-analytics-badge {
+  font-size: var(--font-small);
+  color: var(--primary-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.ig-analytics-title {
+  font-size: var(--font-h1);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.ig-analytics-subtitle {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+}
+
+/* Predictive Cards */
+.ig-predictive-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-med);
+}
+
+.ig-predictive-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-medium);
+}
+
+.ig-predictive-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.ig-predictive-label {
+  font-size: var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.ig-predictive-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.ig-predictive-value.ig-risk-high {
+  color: var(--fire-red);
+}
+
+.ig-predictive-value.ig-risk-medium {
+  color: var(--status-warning);
+}
+
+.ig-predictive-value.ig-risk-low {
+  color: var(--status-success);
+}
+
+.ig-predictive-sub {
+  font-size: var(--font-small);
+  color: var(--text-muted);
+}
+
+/* Recommendations Section */
+.ig-recommendations-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.ig-recommendations-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ig-rec-icon {
+  font-size: 2rem;
+}
+
+.ig-rec-title {
+  font-size: var(--font-h3);
+  font-weight: 800;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.ig-rec-badge {
+  font-size: var(--font-small);
+  padding: 0.4rem 0.75rem;
+  background: rgba(0, 255, 204, 0.12);
+  border: 1px solid rgba(0, 255, 204, 0.3);
+  border-radius: 999px;
+  color: var(--status-success);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ig-recommendations-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ig-rec-card {
+  background: rgba(0, 212, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.ig-rec-card:hover {
+  background: rgba(0, 212, 255, 0.06);
+  border-color: var(--border-medium);
+}
+
+.ig-rec-text {
+  font-size: var(--font-body);
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.ig-rec-priority {
+  font-size: var(--font-small);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.ig-rec-priority.ig-priority-high {
+  background: rgba(255, 94, 0, 0.15);
+  color: var(--fire-red);
+  border: 1px solid rgba(255, 94, 0, 0.3);
+}
+
+.ig-rec-priority.ig-priority-medium {
+  background: rgba(255, 184, 77, 0.12);
+  color: var(--status-warning);
+  border: 1px solid rgba(255, 184, 77, 0.3);
+}
+
+.ig-rec-priority.ig-priority-low {
+  background: rgba(0, 212, 255, 0.12);
+  color: var(--primary-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   19. INCIDENT HISTORY PAGE STYLES
+   ══════════════════════════════════════════════════════════════ */
+.ig-history-header {
+  background: linear-gradient(135deg,
+    rgba(0, 102, 255, 0.08) 0%,
+    rgba(0, 212, 255, 0.05) 100%);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.ig-history-badge {
+  font-size: var(--font-small);
+  color: var(--primary-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.ig-history-title {
+  font-size: var(--font-h1);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.ig-history-subtitle {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+}
+
+/* History Stat Cards */
+.ig-history-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-med);
+}
+
+.ig-history-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-medium);
+}
+
+.ig-history-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.ig-history-stat-value.fire {
+  background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ig-history-stat-label {
+  font-size: var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Empty State */
+.ig-history-empty {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.ig-history-empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.ig-history-empty-title {
+  font-size: var(--font-h3);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.ig-history-empty-desc {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+}
+
+/* Pagination Info */
+.ig-pagination-info {
+  font-size: var(--font-label);
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Incident Details */
+.ig-incident-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ig-incident-detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ig-incident-detail-row:last-child {
+  border-bottom: none;
+}
+
+.ig-incident-detail-label {
+  font-size: var(--font-label);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.ig-incident-detail-value {
+  font-size: var(--font-body);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Severity Badge */
+.ig-severity-badge {
+  font-size: var(--font-small);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ig-severity-badge.ig-severity-critical {
+  background: rgba(255, 94, 0, 0.15);
+  color: var(--fire-red);
+  border: 1px solid rgba(255, 94, 0, 0.3);
+}
+
+.ig-severity-badge.ig-severity-high {
+  background: rgba(255, 94, 0, 0.12);
+  color: var(--fire-orange);
+  border: 1px solid rgba(255, 94, 0, 0.25);
+}
+
+.ig-severity-badge.ig-severity-medium {
+  background: rgba(255, 184, 77, 0.12);
+  color: var(--status-warning);
+  border: 1px solid rgba(255, 184, 77, 0.3);
+}
+
+.ig-severity-badge.ig-severity-low {
+  background: rgba(0, 212, 255, 0.12);
+  color: var(--primary-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+/* Screenshot Placeholder */
+.ig-screenshot-placeholder {
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+}
+
+/* AI Summary */
+.ig-ai-summary {
+  background: rgba(0, 212, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--primary-cyan);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+}
+
+.ig-ai-summary-header {
+  font-size: var(--font-label);
+  color: var(--primary-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.ig-ai-summary-text {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   20. SETTINGS PAGE STYLES
+   ══════════════════════════════════════════════════════════════ */
+.ig-settings-header {
+  background: linear-gradient(135deg,
+    rgba(0, 102, 255, 0.08) 0%,
+    rgba(0, 212, 255, 0.05) 100%);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.ig-settings-badge {
+  font-size: var(--font-small);
+  color: var(--primary-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.ig-settings-title {
+  font-size: var(--font-h1);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.ig-settings-subtitle {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+}
+
+/* Profile Hero */
+.ig-profile-hero {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.ig-profile-hero-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ig-profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+.ig-profile-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.ig-profile-role-badge {
+  font-size: var(--font-small);
+  padding: 0.3rem 0.7rem;
+  background: rgba(0, 212, 255, 0.12);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  color: var(--primary-cyan);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.ig-profile-email {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.ig-profile-meta {
+  font-size: var(--font-label);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ig-profile-meta-sep {
+  color: var(--text-muted);
+}
+
+.ig-profile-hero-right {
+  display: flex;
+  gap: 2rem;
+}
+
+.ig-profile-stat {
+  text-align: center;
+}
+
+.ig-profile-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.ig-profile-stat-label {
+  font-size: var(--font-label);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* Settings Section Header */
+.ig-settings-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.ig-settings-section-icon {
+  font-size: 1.5rem;
+}
+
+.ig-settings-section-title {
+  font-size: var(--font-h3);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Security Info Card */
+.ig-security-info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ig-security-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ig-security-row:last-child {
+  border-bottom: none;
+}
+
+.ig-security-label {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.ig-security-value {
+  font-size: var(--font-body);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.ig-security-status {
+  font-size: var(--font-small);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ig-security-status-ok {
+  background: rgba(0, 255, 204, 0.12);
+  color: var(--status-success);
+  border: 1px solid rgba(0, 255, 204, 0.3);
+}
+
+/* Alert Row */
+.ig-alert-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+}
+
+.ig-alert-row-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ig-alert-row-icon {
+  font-size: 1.5rem;
+}
+
+.ig-alert-row-title {
+  font-size: var(--font-body);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.ig-alert-row-desc {
+  font-size: var(--font-label);
+  color: var(--text-secondary);
+}
+
+/* Integration Card */
+.ig-integration-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ig-integration-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ig-integration-icon {
+  font-size: 1.8rem;
+}
+
+.ig-integration-title {
+  font-size: var(--font-body);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.ig-integration-desc {
+  font-size: var(--font-label);
+  color: var(--text-secondary);
+}
+
+.ig-integration-status {
+  margin-left: auto;
+  font-size: var(--font-small);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ig-integration-status.ig-integration-active {
+  background: rgba(0, 255, 204, 0.12);
+  color: var(--status-success);
+  border: 1px solid rgba(0, 255, 204, 0.3);
+}
+
+.ig-integration-status.ig-integration-inactive {
+  background: rgba(107, 114, 128, 0.12);
+  color: var(--text-muted);
+  border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+/* Appearance Card */
+.ig-appearance-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ig-appearance-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ig-appearance-item:last-child {
+  border-bottom: none;
+}
+
+.ig-appearance-label {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.ig-appearance-value {
+  font-size: var(--font-body);
+  color: var(--text-primary);
+}
+
+.ig-appearance-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--border-subtle);
+}
+
+.ig-appearance-swatch.ig-swatch-cyan {
+  background: var(--primary-cyan);
+}
+
+.ig-appearance-swatch.ig-swatch-fire {
+  background: var(--fire-orange);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   21. LIVE DETECTION PAGE STYLES
+   ══════════════════════════════════════════════════════════════ */
+.ig-scan-container {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 0;
+}
+
+.ig-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
+  animation: scanLine 3s linear infinite;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.6;
+}
+
+.ig-emergency-banner {
+  background: linear-gradient(135deg, rgba(255, 94, 0, 0.2), rgba(255, 45, 45, 0.15));
+  border: 1px solid var(--fire-red);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: var(--font-body);
+  text-align: center;
+  animation: pulse-fire 1.5s ease-in-out infinite;
+}
+
+.ig-notification-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.ig-notification-item:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-medium);
+}
+
+/* Corner Brackets for Video Feed */
+.ig-corner-bracket {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary-cyan);
+  opacity: 0.6;
+  z-index: 5;
+}
+
+.ig-corner-bracket.tl {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.ig-corner-bracket.tr {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.ig-corner-bracket.bl {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+}
+
+.ig-corner-bracket.br {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   22. ANIMATIONS
+   ══════════════════════════════════════════════════════════════ */
+@keyframes pulse-active {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes pulse-fire {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 94, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 94, 0, 0.7);
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    top: 0%;
+    opacity: 0.6;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation Utility Classes */
+.ig-animate-fadeInUp {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.ig-delay-1 { animation-delay: 0.05s; }
+.ig-delay-2 { animation-delay: 0.10s; }
+.ig-delay-3 { animation-delay: 0.15s; }
+.ig-delay-4 { animation-delay: 0.20s; }
+
+/* ══════════════════════════════════════════════════════════════
+   23. RESPONSIVE DESIGN
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  [data-testid="stMainBlockContainer"] {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .ig-hero {
+    padding: 1.5rem;
+  }
+  
+  .ig-hero-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-h1: 28px;
+    --font-h2: 22px;
+    --font-h3: 18px;
+  }
+  
+  [data-testid="stSidebar"] {
+    width: 240px !important;
+  }
+  
+  .ig-profile-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .ig-profile-hero-right {
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .ig-analytics-header,
+  .ig-history-header,
+  .ig-settings-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   24. ADDITIONAL SIDEBAR ENHANCEMENTS
+   ══════════════════════════════════════════════════════════════ */
+.ig-sidebar-version {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 0.25rem;
+  letter-spacing: 0.06em;
+}
+
+.ig-sidebar-stats {
+  margin: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 212, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.ig-sidebar-stat-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.ig-sidebar-stat-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ig-sidebar-stat-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ig-online-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--status-success);
+  box-shadow: 0 0 6px var(--status-success);
+  animation: pulse-active 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+.ig-logout-section {
+  margin-top: auto;
+  padding: 0.75rem;
+}
+
+.ig-btn-logout button {
+  background: rgba(255, 94, 0, 0.1) !important;
+  color: var(--fire-orange) !important;
+  border: 1px solid rgba(255, 94, 0, 0.3) !important;
+}
+
+.ig-btn-logout button:hover {
+  background: rgba(255, 94, 0, 0.2) !important;
+  border-color: rgba(255, 94, 0, 0.5) !important;
+}
+
+.ig-logout-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   25. FINAL POLISH & FIXES
+   ══════════════════════════════════════════════════════════════ */
+
+
+/* Improve contrast for all labels */
+label, .stMarkdown label {
+  color: var(--text-secondary) !important;
+  font-size: var(--font-label) !important;
+}
+
+/* Ensure cards don't break layout */
+.ig-card, .ig-metric-card {
+  min-width: 0;
+  word-wrap: break-word;
+}
+
+/* Improve spacing consistency */
+.stMarkdown {
+  margin-bottom: 0.5rem;
+}
+
+
+/* Ensure proper spacing in forms */
+.stForm {
+  padding: 1rem 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   END OF STYLES
+   ══════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════
+   26. ADDITIONAL SIDEBAR COMPONENTS (Referenced in app.py)
+   ══════════════════════════════════════════════════════════════ */
+.ig-sidebar-logo-ring-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.ig-sidebar-logo-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  border: 2px solid var(--primary-cyan);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+.ig-sidebar-logo-shimmer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
+  opacity: 0.4;
+}
+
+.ig-sidebar-avatar-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.ig-sidebar-avatar-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--primary-cyan);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.ig-nav-section-header {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  padding: 1rem 1rem 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.ig-nav-item-wrap {
+  position: relative;
+}
+
+.ig-nav-item-active-dot {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--status-success);
+  box-shadow: 0 0 8px var(--status-success);
+  animation: pulse-active 2s ease-in-out infinite;
+  z-index: 10;
+}
+
+.ig-ai-status-standby {
+  background: rgba(107, 114, 128, 0.05);
+  border-color: rgba(107, 114, 128, 0.15);
+}
+
+.ig-status-dot-standby {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.ig-ai-uptime {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.ig-ai-status-active {
+  background: rgba(0, 255, 204, 0.05);
+  border-color: rgba(0, 255, 204, 0.15);
+}
+
+.ig-status-radar {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ig-status-radar-ring {
+  position: absolute;
+  border: 1px solid var(--status-success);
+  border-radius: 50%;
+  opacity: 0;
+  animation: radar-pulse 2s ease-out infinite;
+}
+
+.ig-status-radar-ring-1 {
+  width: 100%;
+  height: 100%;
+  animation-delay: 0s;
+}
+
+.ig-status-radar-ring-2 {
+  width: 100%;
+  height: 100%;
+  animation-delay: 0.7s;
+}
+
+.ig-status-radar-ring-3 {
+  width: 100%;
+  height: 100%;
+  animation-delay: 1.4s;
+}
+
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Navigation item specific styling */
+.ig-nav-item-dashboard,
+.ig-nav-item-live,
+.ig-nav-item-analytics,
+.ig-nav-item-history,
+.ig-nav-item-settings {
+  margin-bottom: 0.25rem;
+}
+
+.ig-profile-avatar-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.ig-profile-online-dot {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--status-success);
+  border: 2px solid var(--bg-card);
+  box-shadow: 0 0 8px var(--status-success);
+  animation: pulse-active 2s ease-in-out infinite;
+}
+
+.ig-profile-avatar-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  border: 2px solid var(--primary-cyan);
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   27. UI UTILITY COMPONENTS (Footer, Breadcrumbs, Toasts, etc.)
+   ══════════════════════════════════════════════════════════════ */
+
+/* Page Footer */
+.ig-page-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: var(--font-label);
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ig-footer-left,
+.ig-footer-center,
+.ig-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ig-footer-brand {
+  font-weight: 700;
+  color: var(--primary-cyan);
+}
+
+.ig-footer-sep {
+  color: var(--text-muted);
+}
+
+.ig-footer-version,
+.ig-footer-page,
+.ig-footer-copy {
+  color: var(--text-muted);
+}
+
+/* Breadcrumbs */
+.ig-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  margin-bottom: 1rem;
+  font-size: var(--font-label);
+}
+
+.ig-breadcrumb-item {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.ig-breadcrumb-item.ig-breadcrumb-active {
+  color: var(--primary-cyan);
+  font-weight: 700;
+}
+
+.ig-breadcrumb-sep {
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* Toast Notifications */
+.ig-toast {
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-size: var(--font-body);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-md);
+  animation: slideInDown 0.35s ease forwards;
+}
+
+.ig-toast-success {
+  background: rgba(0, 255, 204, 0.12);
+  border: 1px solid rgba(0, 255, 204, 0.3);
+  color: var(--status-success);
+}
+
+.ig-toast-error {
+  background: rgba(255, 94, 0, 0.12);
+  border: 1px solid rgba(255, 94, 0, 0.3);
+  color: var(--fire-red);
+}
+
+.ig-toast-warning {
+  background: rgba(255, 184, 77, 0.12);
+  border: 1px solid rgba(255, 184, 77, 0.3);
+  color: var(--status-warning);
+}
+
+.ig-toast-info {
+  background: rgba(0, 212, 255, 0.12);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: var(--primary-cyan);
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Empty State Card */
+.ig-empty-state-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.ig-empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.ig-empty-state-title {
+  font-size: var(--font-h3);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.ig-empty-state-desc {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.ig-empty-state-action {
+  font-size: var(--font-label);
+  color: var(--primary-cyan);
+  font-weight: 600;
+}
+
+/* Loading Skeletons */
+.ig-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-card) 25%,
+    rgba(0, 212, 255, 0.05) 50%,
+    var(--bg-card) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+.ig-skeleton-text {
+  height: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.ig-skeleton-card {
+  height: 200px;
+  width: 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Section Divider with Label */
+.ig-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.ig-section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.ig-section-divider-label {
+  font-size: var(--font-label);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Tooltip Badge */
+.ig-tooltip-wrap {
+  position: relative;
+  cursor: help;
+}
+
+.ig-tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: var(--font-small);
+  white-space: nowrap;
+  z-index: 1000;
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-fast);
+}
+
+.ig-tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--bg-secondary);
+}
+
+.ig-tooltip-wrap:hover .ig-tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   28. AI COMMAND CENTER LOGIN - COMPACT NO-SCROLL VERSION
+   ══════════════════════════════════════════════════════════════ */
+
+/* AI Command Center Card - Compact */
+.auth-command-center {
+  background: linear-gradient(135deg, 
+    rgba(15, 23, 41, 0.98) 0%,
+    rgba(20, 30, 48, 0.95) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 
+    0 0 50px rgba(0, 212, 255, 0.18),
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-command-center::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 60%);
+  animation: command-pulse 10s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes command-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.6; transform: scale(1.02) rotate(180deg); }
+}
+
+.auth-command-center > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Compact Branding */
+.auth-command-center h1 {
+  font-weight: 900 !important;
+  font-size: 1.75rem !important;
+  background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.2rem !important;
+  margin-top: 0 !important;
+  filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.4));
+}
+
+.auth-command-center strong {
+  color: rgba(238, 240, 255, 0.85) !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  display: block !important;
+  margin-bottom: 0.2rem !important;
+}
+
+.auth-command-center .stCaption {
+  color: rgba(238, 240, 255, 0.5) !important;
+  font-size: 0.7rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.auth-command-center h4 {
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  color: var(--primary-cyan) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+/* Compact Status Cards - 120px height max */
+.auth-status-card {
+  background: rgba(10, 15, 30, 0.6);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 12px;
+  padding: 0.75rem 0.6rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 
+    0 2px 12px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(0, 212, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 105px;
+  max-height: 120px;
+}
+
+.auth-status-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
+  opacity: 0.4;
+}
+
+.auth-status-card:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(0, 212, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.auth-status-card:hover::after {
+  opacity: 1;
+}
+
+.auth-status-icon {
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+}
+
+.auth-status-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(238, 240, 255, 0.6);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.auth-status-value {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--primary-cyan);
+  margin-bottom: 0.25rem;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.auth-status-sub {
+  font-size: 0.6rem;
+  color: rgba(238, 240, 255, 0.5);
+  line-height: 1.2;
+}
+
+/* Compact Features List */
+.auth-command-center p {
+  color: rgba(238, 240, 255, 0.75) !important;
+  font-size: 0.75rem !important;
+  margin: 0.25rem 0 !important;
+  padding-left: 0.3rem !important;
+  line-height: 1.4;
+}
+
+/* Access Card - Compact */
+.auth-access-card {
+  background: linear-gradient(135deg,
+    rgba(15, 23, 41, 0.98) 0%,
+    rgba(20, 30, 48, 0.95) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 
+    0 0 60px rgba(0, 212, 255, 0.22),
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(24px);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-access-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 212, 255, 0.9), 
+    transparent);
+  animation: access-shimmer 5s infinite;
+}
+
+@keyframes access-shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.auth-access-card h3 {
+  font-weight: 800 !important;
+  font-size: 1.45rem !important;
+  background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.35rem !important;
+  margin-top: 0 !important;
+  letter-spacing: -0.01em;
+}
+
+.auth-access-card > p {
+  color: rgba(238, 240, 255, 0.7) !important;
+  font-size: 0.85rem !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.4;
+}
+
+/* Compact Inputs */
+.auth-access-card input[type="text"],
+.auth-access-card input[type="password"],
+.auth-access-card input[type="email"],
+.auth-access-card .stTextInput input {
+  background: rgba(10, 15, 30, 0.8) !important;
+  border: 1px solid rgba(0, 212, 255, 0.35) !important;
+  border-radius: 10px !important;
+  color: var(--text-primary) !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 0.9rem !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
+}
+
+.auth-access-card input:focus {
+  border-color: var(--primary-cyan) !important;
+  background: rgba(10, 15, 30, 0.95) !important;
+  box-shadow: 
+    0 0 0 3px rgba(0, 212, 255, 0.18),
+    0 0 32px rgba(0, 212, 255, 0.35),
+    0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  outline: none !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Compact Button */
+.auth-access-card button[kind="primary"],
+.auth-access-card .stButton button {
+  background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 0.8rem 1.75rem !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.04em !important;
+  box-shadow: 
+    0 4px 24px rgba(0, 212, 255, 0.45),
+    0 2px 12px rgba(0, 102, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-access-card button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.auth-access-card button:hover {
+  box-shadow: 
+    0 6px 36px rgba(0, 212, 255, 0.65),
+    0 0 50px rgba(0, 212, 255, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+.auth-access-card button:hover::before {
+  left: 100%;
+}
+
+.auth-access-card button:active {
+  transform: translateY(0) !important;
+}
+
+/* Compact Tabs */
+.auth-access-card .stTabs [data-baseweb="tab-list"] {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.25) !important;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.auth-access-card .stTabs [data-baseweb="tab"] {
+  background: transparent !important;
+  border-bottom: 2px solid transparent !important;
+  color: rgba(238, 240, 255, 0.6) !important;
+  padding: 0.7rem 1.5rem !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  transition: all 0.3s ease !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.auth-access-card .stTabs [data-baseweb="tab"]:hover {
+  color: var(--primary-cyan) !important;
+  background: rgba(0, 212, 255, 0.08) !important;
+}
+
+.auth-access-card .stTabs [aria-selected="true"] {
+  color: var(--primary-cyan) !important;
+  border-bottom-color: var(--primary-cyan) !important;
+  background: rgba(0, 212, 255, 0.12) !important;
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.25);
+}
+
+/* Compact Input Labels */
+.auth-access-card label {
+  color: rgba(238, 240, 255, 0.9) !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.45rem !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Compact Alerts */
+.auth-access-card .stAlert {
+  border-radius: 10px !important;
+  border: 1px solid !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+  padding: 0.75rem !important;
+  font-size: 0.85rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   END OF STYLESHEET
+   ══════════════════════════════════════════════════════════════ */
+.js-plotly-plot,
+.plotly,
+.plot-container {
+    background: transparent !important;
+}
+
+svg text {
+    fill: #eef2ff !important;
+}

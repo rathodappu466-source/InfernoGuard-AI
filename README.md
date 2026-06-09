@@ -1,8 +1,7 @@
 # 🔥 InfernoGuard AI
 
 **Enterprise Fire & Smoke Detection System**  
-Real-time AI-powered surveillance for industrial safety
-Built by Appu Rathod using YOLOv8, OpenCV, Streamlit, SQLite, and Plotly Analytics.
+Real-time AI-powered surveillance for industrial safety.
 
 [![Python](https://img.shields.io/badge/Python-3.14+-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.57.0-red.svg)](https://streamlit.io/)
@@ -14,6 +13,21 @@ Built by Appu Rathod using YOLOv8, OpenCV, Streamlit, SQLite, and Plotly Analyti
 
 InfernoGuard AI is an enterprise-grade fire and smoke detection system that leverages YOLOv8 deep learning for real-time threat identification. Built with Streamlit for an intuitive web interface, it provides 24/7 monitoring with multi-channel alerts.
 
+---
+
+## 👨‍💻 Developer
+
+**Appu Rathod**
+
+Aspiring Data Scientist | AI Engineer | Python Developer | Data Analyst
+
+📧 Email: rathodappu466@gmail.com
+
+🐙 GitHub: https://github.com/rathodappu466-source
+
+💼 LinkedIn: https://www.linkedin.com/in/appu-rathod-08172a397
+
+---
 ### ✨ Key Features
 
 - 🤖 **AI-Powered Detection** — YOLOv8 model with 97.3% accuracy
@@ -343,9 +357,9 @@ For questions, issues, or feature requests:
 
 Developer: Appu Rathod
 
-📧 Email: YOUR_EMAIL@gmail.com
+📧 Email: rathodappu466@gmail.com
 
-💼 LinkedIn: https://linkedin.com/in/www.linkedin.com/in/appu-rathod-08172a397
+💼 LinkedIn: https://www.linkedin.com/in/appu-rathod-08172a397
 
 🐙 GitHub: https://github.com/rathodappu466-source
 
